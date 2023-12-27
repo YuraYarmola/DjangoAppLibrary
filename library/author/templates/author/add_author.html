@@ -1,0 +1,31 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block head %}
+<head>
+    <meta charset="UTF-8">
+    <title>Add Author</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <style>
+        /* Add your unique class names to CSS styles */
+
+    </style>
+</head>
+{% endblock %}
+
+{% block content %}
+<body>
+<span class="add_author-container">
+    <form class="add_author-form" method="post" action="{% url 'add_author_page' %}">
+        {% csrf_token %}
+        {% if error %}
+            <p class="add_author-error">{{ error }}</p>
+        {% endif %}
+        {{ form }}
+        <p><input class="add_author-submit" type="submit" value="Створити нового автора"></p>
+        <p><a href="{% url 'all_authors' %}"> Назад </a></p>
+
+
+    </form>
+</span>
+</body>
+{% endblock %}
